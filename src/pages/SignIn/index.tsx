@@ -30,7 +30,7 @@ export default function SignIn(){
                 <TextInput style={styles.input}
                     placeholder='Digite seu email'
                     placeholderTextColor={cores.CORES.white_900}
-                    inputMode='email'
+                    keyboardType='email-address'
                     value={email}
                     onChangeText={ text => setEmail(text)}
                 />
