@@ -31,6 +31,7 @@ export default function SignIn(){
                     placeholder='Digite seu email'
                     placeholderTextColor={cores.CORES.white_900}
                     keyboardType='email-address'
+                    autoCapitalize='none'
                     value={email}
                     onChangeText={ text => setEmail(text)}
                 />
@@ -38,6 +39,7 @@ export default function SignIn(){
                 <TextInput style={styles.input}
                     placeholder='Digite seu senha'
                     placeholderTextColor={cores.CORES.white_900}
+                    autoCapitalize='none'
                     secureTextEntry={true}
                     value={password}
                     onChangeText={text => setPassword(text)}
