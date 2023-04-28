@@ -3,11 +3,18 @@ import { createStackNavigator, CardStyleInterpolators, TransitionPresets  } from
 
 import Dashboard from '../pages/Dashboard';
 import Order from '../pages/Order';
+import FinishOrder from '../pages/FinishOrder';
+
+import cores from '../utils'
 
 
 export type StackPramsList = {
     Dashboard: undefined;
     Order: {
+        number: number | string;
+        order_id: string;
+    };
+    FinishOrder: {
         number: number | string;
         order_id: string;
     };
@@ -28,10 +35,25 @@ export default function AppRoutes(){
             },
             headerShown: false,
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            headerShadowVisible: false, //REMOVE A SOMBRA QUE APARECE DEBAIXO DO CABEÇALHO
+
         }}
         >
             <Stack.Screen name='Dashboard' component={Dashboard} />
             <Stack.Screen name='Order' component={Order} />
-        </Stack.Navigator>
+            <Stack.Screen 
+            name="FinishOrder" 
+            component={FinishOrder} 
+            options={{ 
+                headerShown: true, 
+                title: "Finalizando",
+                
+                headerStyle: {
+                    backgroundColor: cores.CORES.dark_700,
+                    // elevation: 0, //TAMBEM REMOVE A SOMBRA QUE APARECE DEBAIXO DO CABEÇALHO
+                },
+                headerTintColor: cores.CORES.white,
+            }}/>
+        </Stack.Navigator> 
     )
 }

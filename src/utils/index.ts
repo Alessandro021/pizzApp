@@ -11,6 +11,6 @@
         "green_900": "#3FFFA3",
         "red_900": "#FF3F4B",
 
-        "blue": "#3FD1FF"
+        "blue": "#3FD1FF",
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, ScrollView} from 'react-native'
+import { Text, StyleSheet, TouchableOpacity, Dimensions, ScrollView} from 'react-native'
+import Animated, {BounceInDown, BounceOutDown} from 'react-native-reanimated'
 import {categoryProps} from '../../pages/Order'
 import cores from '../../utils'
 
@@ -20,7 +21,10 @@ export function ModalPicker({options, handleCloseModal, selectedItem}: ModalPick
 
     return(
         <TouchableOpacity style={styles.conatiner} onPress={handleCloseModal}>
-            <View style={styles.content}>
+            <Animated.View 
+            style={styles.content}
+            entering={BounceInDown.duration(700)}
+            >
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {
                     options.map((item, index) => (
@@ -32,7 +36,7 @@ export function ModalPicker({options, handleCloseModal, selectedItem}: ModalPick
                     ))
                     }
                 </ScrollView>
-            </View>
+            </Animated.View>
         </TouchableOpacity>
     )
 }
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
     },
 
     content:{
-        width: WIDTH - 20,
+        width: WIDTH - 50,
         height: HEIGHT / 2,
         backgroundColor: cores.CORES.white,
         borderWidth: 1,

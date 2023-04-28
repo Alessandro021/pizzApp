@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {SafeAreaView ,View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native'
 import cores from '../../utils'
 import {StackPramsList} from '../../routes/app.routes'
@@ -9,7 +9,11 @@ import { useNavigation } from "@react-navigation/native";
 
 import { api } from "../../services/api";
 
+import { Feather } from '@expo/vector-icons'
+import { AuthContext } from "../../contexts/AuthContext";
+
 export default function Dashboard(){
+    const {signOut} = useContext(AuthContext)
     const navigation = useNavigation<StackNavigationProp<StackPramsList>>()
 
     const [number, setNumber ] = useState("")
@@ -31,6 +35,10 @@ export default function Dashboard(){
     }
     return(
         <SafeAreaView style={styles.container}>
+
+            <TouchableOpacity style={styles.signOut} onPress={signOut}>
+                <Feather name="log-out" size={24} color="white" />
+            </TouchableOpacity>
             <Text style={styles.title}> Novo pedido</Text>
                 
                 <TextInput style={styles.input}
@@ -89,6 +97,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: cores.CORES.dark_900,
         fontWeight: "bold",
+    },
+
+    signOut:{
+        position: "absolute",
+        top: 24,
+        right: 24
     }
 
 })
